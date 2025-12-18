@@ -1,1 +1,1 @@
-personal website (why am i doing his)
+personal website (why am i doing this)
