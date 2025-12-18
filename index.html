@@ -11,7 +11,12 @@
     img.style.width = "13px";
     img.style.pointerEvents = "none";
     img.style.zIndex = "99999";
+    img.style.opacity = "1";
+    img.style.transition = "opacity 0.3s linear";
     document.body.appendChild(img);
+    requestAnimationFrame(() => {
+      img.style.opacity = "0";
+    });
     setTimeout(() => img.remove(), 300);
   });
 </script>
@@ -109,6 +114,7 @@ font-family: "lucidia console", "courier new", sans-serif;
     <div></div>
 </body>
 </html>
+
 
 
 
