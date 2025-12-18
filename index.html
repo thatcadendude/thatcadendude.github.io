@@ -2,46 +2,18 @@
 <head>
     <title>my site: home</title>
 <script>
-  const trailCount = 8;   // number of images in the trail
-  const trail = [];
-
-  for (let i = 0; i < trailCount; i++) {
+  document.addEventListener("mousemove", e => {
     const img = document.createElement("img");
     img.src = "cursor.png";
     img.style.position = "fixed";
-    img.style.width = "24px";   // adjust size
-    img.style.height = "24px";
+    img.style.left = e.clientX + "px";
+    img.style.top = e.clientY + "px";
+    img.style.width = "32px";
     img.style.pointerEvents = "none";
-    img.style.zIndex = "9999";
-    img.style.opacity = (1 - i / trailCount).toString();
+    img.style.zIndex = "99999";
     document.body.appendChild(img);
-    trail.push({ el: img, x: 0, y: 0 });
-  }
-
-  let mouseX = 0, mouseY = 0;
-
-  document.addEventListener("mousemove", e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    setTimeout(() => img.remove(), 300);
   });
-
-  function animate() {
-    let x = mouseX;
-    let y = mouseY;
-
-    trail.forEach((t, i) => {
-      t.x += (x - t.x) * 0.25;
-      t.y += (y - t.y) * 0.25;
-      t.el.style.left = t.x + "px";
-      t.el.style.top = t.y + "px";
-      x = t.x;
-      y = t.y;
-    });
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
 </script>
     <style>
 body {
@@ -137,6 +109,7 @@ font-family: "lucidia console", "courier new", sans-serif;
     <div></div>
 </body>
 </html>
+
 
 
 
