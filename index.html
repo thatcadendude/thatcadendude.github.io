@@ -4,12 +4,12 @@
 <script>
   document.addEventListener("mousemove", e => {
     const emoji = document.createElement("span");
-    emoji.textContent = "cursor.png";
+    emoji.src = "cursor.png";
     emoji.style.position = "fixed";
     emoji.style.left = e.clientX + "px";
     emoji.style.top = e.clientY + "px";
     emoji.style.pointerEvents = "none";
-    emoji.style.fontSize = "20px";
+    emoji.style.size = "20px";
     emoji.style.transform = "translate(-50%, -50%)";
     emoji.style.transition = "opacity 0.5s ease, transform 0.5s ease";
     document.body.appendChild(emoji);
@@ -116,6 +116,7 @@ font-family: "lucidia console", "courier new", sans-serif;
     <div></div>
 </body>
 </html>
+
 
 
 
