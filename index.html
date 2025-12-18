@@ -1,12 +1,25 @@
 <html>
 <head>
     <title>my site: home</title>
-<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 <script>
-  window.addEventListener("load", () => {
-    new cursoreffects.springyEmojiCursor({
-      emoji: "💩"
+  document.addEventListener("mousemove", e => {
+    const emoji = document.createElement("span");
+    emoji.textContent = "💩";
+    emoji.style.position = "fixed";
+    emoji.style.left = e.clientX + "px";
+    emoji.style.top = e.clientY + "px";
+    emoji.style.pointerEvents = "none";
+    emoji.style.fontSize = "20px";
+    emoji.style.transform = "translate(-50%, -50%)";
+    emoji.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+    document.body.appendChild(emoji);
+
+    requestAnimationFrame(() => {
+      emoji.style.opacity = "0";
+      emoji.style.transform += " scale(2)";
     });
+
+    setTimeout(() => emoji.remove(), 500);
   });
 </script>
     <style>
@@ -103,6 +116,7 @@ font-family: "lucidia console", "courier new", sans-serif;
     <div></div>
 </body>
 </html>
+
 
 
 
