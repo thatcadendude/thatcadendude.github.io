@@ -1,2 +1,1 @@
-totally cool stuff yeah
-(probably just gonna be used for this specific boredom project)
+personal website (why am i doing his)
