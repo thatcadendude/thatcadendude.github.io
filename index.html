@@ -2,25 +2,46 @@
 <head>
     <title>my site: home</title>
 <script>
-  document.addEventListener("mousemove", e => {
-    const emoji = document.createElement("span");
-    emoji.src = "cursor.png";
-    emoji.style.position = "fixed";
-    emoji.style.left = e.clientX + "px";
-    emoji.style.top = e.clientY + "px";
-    emoji.style.pointerEvents = "none";
-    emoji.style.size = "20px";
-    emoji.style.transform = "translate(-50%, -50%)";
-    emoji.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-    document.body.appendChild(emoji);
+  const trailCount = 8;   // number of images in the trail
+  const trail = [];
 
-    requestAnimationFrame(() => {
-      emoji.style.opacity = "0";
-      emoji.style.transform += " scale(2)";
+  for (let i = 0; i < trailCount; i++) {
+    const img = document.createElement("img");
+    img.src = "cursor.png";
+    img.style.position = "fixed";
+    img.style.width = "24px";   // adjust size
+    img.style.height = "24px";
+    img.style.pointerEvents = "none";
+    img.style.zIndex = "9999";
+    img.style.opacity = (1 - i / trailCount).toString();
+    document.body.appendChild(img);
+    trail.push({ el: img, x: 0, y: 0 });
+  }
+
+  let mouseX = 0, mouseY = 0;
+
+  document.addEventListener("mousemove", e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    let x = mouseX;
+    let y = mouseY;
+
+    trail.forEach((t, i) => {
+      t.x += (x - t.x) * 0.25;
+      t.y += (y - t.y) * 0.25;
+      t.el.style.left = t.x + "px";
+      t.el.style.top = t.y + "px";
+      x = t.x;
+      y = t.y;
     });
 
-    setTimeout(() => emoji.remove(), 500);
-  });
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 </script>
     <style>
 body {
@@ -116,6 +137,7 @@ font-family: "lucidia console", "courier new", sans-serif;
     <div></div>
 </body>
 </html>
+
 
 
 
