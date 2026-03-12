@@ -8,7 +8,7 @@
   --bg:#000000; 
   --card:#000000; 
   --accent:#000000; 
-  --muted:#000000; 
+  --muted:#04ff00; 
   --glass: rgba(255,255,255,1);
   --success:#000000; 
   --danger:#000000;
@@ -20,7 +20,7 @@ body, h1, h2, h3, p, label, div, span, button {
 
 .table, .table * {
   color: #000000;
-  border:1px solid: #04ff00;
+  border:1px solid #04ff00;
 }
  
 html,body{height:100%}
@@ -41,9 +41,7 @@ body{
   grid-template-columns:420px 1fr; 
   gap:28px;
   background:#000000;
-  border:1px solid: #04ff00;
-}
-
+  border:1px solid #000000;
 }
 
 .card{
@@ -60,29 +58,29 @@ body{
 }
  
 h1{margin:0 0 8px 0; font-size:20px}
-p.lead{margin:0 0 14px 0; color:var(--muted)}
+p.lead{margin:0 0 14px 0; color:#04ff00}
 
 .notice{
   background:#000000;
-  border-left:4px solid var(--accent); 
+  border-left:4px solid #04ff00; 
   padding:10px 12px; 
   border-radius:1px; 
   margin-bottom:12px;
-  color:var(--muted); 
+  color:#04ff00; 
   font-size:13px;
 }
 
-label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
+label{display:block; font-size:13px; color:#04ff00; margin-bottom:6px}
+
 .fake-input{
-  background:var(--glass); 
   border:1px solid #04ff00; 
   padding:10px 12px; 
   border-radius:0; 
-  color:#04ff00;
+  color:#000000;
   width:100%; 
   box-sizing:border-box; 
   margin-bottom:10px;
-  background:#000000
+  background:#04ff00
 }
 
 .btn{
@@ -95,9 +93,10 @@ label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
   color:#04ff00; 
   font-weight:600;
 }
+
 .linkless{
   background:#000000; 
-  color:var(--accent); 
+  color:#04ff00; 
   border:1px solid #04ff00; 
   padding:8px 10px; 
   border-radius:0;
@@ -109,7 +108,9 @@ label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
   display:flex; 
   flex-direction:column; 
   gap:12px;
+  border:1px solid #04ff00;
 }
+
 .table{
   background: #04ff00; 
   border-radius:0; 
@@ -117,15 +118,21 @@ label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
   display:flex; 
   gap:12px; 
   align-items:flex-start;
+  border:1px solid #04ff00;
 }
+
 .hand {
   min-width:150px; 
   padding:8px; 
   background:#04ff00; 
   border-radius:0;
+  border:1px solid #04ff00;
 }
+
 .hand h3{margin:0 0 8px 0; font-size:14px}
+
 .cards{display:flex; gap:8px; flex-wrap:wrap}
+
 .card-ui{
   width:52px; 
   height:72px; 
@@ -137,22 +144,25 @@ label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
   justify-content:center;
   font-weight:700; 
   box-shadow:none;
-  border:1px solid #04ff00;
+  border:1px solid #000000;
 }
 
 /* Hidden dealer card */
 .card-ui.hidden {
   background: #04ff00;
-  color: #000;
-  border: 1px solid #000;
+  color: #000000;
+  border: 1px solid #000000;
 }
 
 .controls{display:flex; gap:8px; margin-top:8px}
-.msg{font-size:14px; color:var(--muted)}
-.result{padding:10px; border-radius:0}
 
-.success{background:#04ff00; color:var(--success)}
-.lose{background:#04ff00; color:var(--danger)}
+.msg{font-size:14px; color:#04ff00}
+
+.result{padding:10px; border-radius:0; border:1px solid #04ff00}
+
+.success{background:#04ff00; color:#000}
+
+.lose{background:#04ff00; color:#000}
 
 .password-box{
   margin-top:12px; 
@@ -162,8 +172,11 @@ label{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
   color:#04ff00;
   word-break:break-all; 
   font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  border:1px solid #04ff00;
 }
-footer{margin-top:12px; font-size:12px; color:var(--muted)}
+
+footer{margin-top:12px; font-size:12px; color:#04ff00}
+
 @media(max-width:820px){ .container{grid-template-columns:1fr} }
 </style>
 </head>
@@ -188,12 +201,12 @@ footer{margin-top:12px; font-size:12px; color:var(--muted)}
 
       <div class="table">
         <div class="hand">
-          <h3>you <span id="playerVal" style="float:right;color:var(--muted)">0</span></h3>
+          <h3>you <span id="playerVal" style="float:right;color:#000000">0</span></h3>
           <div class="cards" id="playerCards"></div>
         </div>
 
         <div class="hand">
-          <h3>dealer <span id="dealerVal" style="float:right;color:var(--muted)">0</span></h3>
+          <h3>dealer <span id="dealerVal" style="float:right;color:#000">0</span></h3>
           <div class="cards" id="dealerCards"></div>
         </div>
       </div>
@@ -210,7 +223,7 @@ footer{margin-top:12px; font-size:12px; color:var(--muted)}
       <div class="password-box" id="passwordBox" style="display:none">
         <strong>new password yes:</strong>
         <div id="newPassword" style="margin-top:8px; font-size:16px"></div>
-        <div style="margin-top:8px; font-size:13px; color:var(--muted)">heres your password bossman.</div>
+        <div style="margin-top:8px; font-size:13px; color:#04ff00">heres your password bossman.</div>
       </div>
     </div>
   </div>
@@ -241,12 +254,14 @@ function buildDeck(){
   }
   return d;
 }
+
 function shuffle(a){
   for(let i=a.length-1;i>0;i--){
     const j = Math.floor(Math.random()*(i+1));
     [a[i],a[j]] = [a[j],a[i]];
   }
 }
+
 function valueOfCard(c){
   if(!c) return 0;
   const r = c.r;
@@ -254,6 +269,7 @@ function valueOfCard(c){
   if(['J','Q','K'].includes(r)) return 10;
   return parseInt(r,10);
 }
+
 function handValue(hand){
   let total = 0, aces = 0;
   for(const c of hand){
@@ -263,9 +279,11 @@ function handValue(hand){
   while(total>21 && aces>0){ total-=10; aces--; }
   return total;
 }
+
 function cardLabel(c){
   return `<div class="card-ui">${c.r}${c.s}</div>`;
 }
+
 function render(){
   playerCardsEl.innerHTML = player.map(cardLabel).join('');
   dealerCardsEl.innerHTML = dealer.map((c,i)=>{
@@ -288,17 +306,6 @@ function reset(){
 }
 
 function dealCard(hand){ hand.push(deck.pop()); }
-function checkOutcome(){
-  const p = handValue(player);
-  const d = handValue(dealer);
-  if(p>21){ endRound('lose'); return; }
-  if(playerStood){
-    while(d<17){ dealCard(dealer); render(); }
-    if(d>21 || p>d){ endRound('win'); }
-    else if(p===d){ endRound('draw'); }
-    else{ endRound('lose'); }
-  }
-}
 
 function checkOutcome(){
   const p = handValue(player);
@@ -310,11 +317,12 @@ function checkOutcome(){
   }
 
   if(playerStood){
-    while(d < 17 && dealer.length < 4){ 
+    while(d < 17){ 
       dealCard(dealer); 
       render(); 
       d = handValue(dealer);
     }
+
     if(d > 21 || p > d){ 
       endRound('win'); 
     }
@@ -331,15 +339,18 @@ function endRound(result){
   inRound=false; hitBtn.disabled=true; standBtn.disabled=true;
   playerStood=true;
   render();
+
   if(result==='win'){ 
     messageEl.textContent='wow so cool innit yeah.'; 
     resultBox.innerHTML='<div class="result success">good job mate</div>';
     passwordBox.style.display='block';
     newPasswordEl.textContent = Math.random().toString(36).slice(2,10);
-  } else if(result==='lose'){ 
+  } 
+  else if(result==='lose'){ 
     messageEl.textContent='you lost haha lol.'; 
     resultBox.innerHTML='<div class="result lose">git gud</div>';
-  } else {
+  } 
+  else {
     messageEl.textContent='draw';
     resultBox.innerHTML='<div class="result">oops oh no</div>';
   }
