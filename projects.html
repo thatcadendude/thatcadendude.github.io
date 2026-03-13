@@ -2,6 +2,23 @@
 <head>
     <title>thatcadendude: home</title>
 <style>
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.65) 100%
+  );
+
+  filter: blur(6px);
+  transform: scale(1.1);
+}
 .text, p, h1 {
   color: #00ff41;
   text-shadow:
@@ -17,6 +34,11 @@
 
 body {
   animation: flicker 0.15s infinite;
+}
+
+nav {
+  position: fixed;
+  z-index: 1;
 }
     
 body {
@@ -153,25 +175,28 @@ p {
 </style>
 </head>
 <body>
-<nav>
-  <ul>
-    <li><a href="https://thatcadendude.github.io">home</a></li>
-    <li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
-    <li><a href="https://thatcadendude.github.io/about">about</a></li>
-    <li><a href="https://thatcadendude.github.io/projects">projects</a></li>
-  </ul>
-</nav>
-    <h1>Projects</h1>
-    <p>a collection of boredom projects ive made</p>
-    <p>(i will add more when i feel like it)</p>
-    <div class="container">
-      <a href="https://thatcadendude.github.io/blackjack">
-        <img src="https://images.meme-arsenal.com/78787cd6560a705280729d5bc412cdc7.jpg" class="image" style="height:30%">
-  <div class="topleft">
-    <div class="text">blackjack</div>
-  </div>  
-  <div class="bottomleft">
-    <div class="text">you forgot your password on a website, so you have to play blackjack to get a new password...</div>
-  </div>
+<div class="screen">
+   <nav>
+   <ul>
+     <li><a href="https://thatcadendude.github.io">home</a></li>
+     <li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
+     <li><a href="https://thatcadendude.github.io/about">about</a></li>
+     <li><a href="https://thatcadendude.github.io/projects">projects</a></li>
+   </ul>
+ </nav>
+     <h1>Projects</h1>
+     <p>a collection of boredom projects ive made</p>
+     <p>(i will add more when i feel like it)</p>
+     <div class="container">
+       <a href="https://thatcadendude.github.io/blackjack">
+         <img src="https://images.meme-arsenal.com/78787cd6560a705280729d5bc412cdc7.jpg" class="image" style="height:30%">
+   <div class="topleft">
+     <div class="text">blackjack</div>
+   </div>  
+   <div class="bottomleft">
+     <div class="text">you forgot your password on a website, so you have to play blackjack to get a new password...</div>
+   </div>
+ </div>
 </div>
 </body>
+</html>
