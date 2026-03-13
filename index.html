@@ -2,13 +2,49 @@
 <head>
     <title>thatcadendude: home</title>
 <style>
-body {
-    background-color: #000000;
+.text, p, h1 {
+  color: #00ff41;
+  text-shadow:
+    0 0 2.5px #00ff41,
+    0 0 5px #00ff41;
 }
 
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.96; }
+}
+
+body {
+  animation: flicker 0.15s infinite;
+}
+    
+body {
+  background: #000000;
+
+}
+
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.25) 3px
+  );
+
+  z-index: 999;
+}
 
 h1 {
-  color: 05ff00;
+  color: 04ff00;
 font-family: "lucidia console", "courier new", sans-serif;
   text-align: center;
   margin-top: 60px;
@@ -17,7 +53,7 @@ font-family: "lucidia console", "courier new", sans-serif;
 div {
   width: 100px;
   height: 100px;
-  background: #05ff00;
+  background: #04ff00;
   transition: width 2s, height 2s, transform 2s;
 }
 
@@ -25,7 +61,7 @@ div:hover {
   width: 300px;
   height: 300px;
   transform: rotate(-1080deg);
-  background: #05ff00;
+  background: #04ff00;
 }
 
 ul {
@@ -33,7 +69,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: 05ff00;
+  background-color: 04ff00;
   position: fixed;
   top: 0;
   width: 100%
@@ -55,16 +91,16 @@ font-family: "lucidia console", "courier new", sans-serif;
 
 li a:hover:not(.active) {
   background-color: black;
-  color: 05ff00;
+  color: 04ff00;
 }
 
 .active {
   background-color: black;
-  color: 05ff00;
+  color: 04ff00;
 }
 
 p {
-   color: 05ff00;  
+   color: 04ff00;  
 font-family: "lucidia console", "courier new", sans-serif;
   font-size: 20px;
 }
@@ -96,39 +132,3 @@ font-family: "lucidia console", "courier new", sans-serif;
     <div></div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
