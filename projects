@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>thatcadendude: home</title>
+<style>
+body {
+    background-color: #000000;
+}
+
+
+h1 {
+  color: 05ff00;
+font-family: "lucidia console", "courier new", sans-serif;
+  text-align: center;
+  margin-top: 60px;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  background: #05ff00;
+  transition: width 2s, height 2s, transform 2s;
+}
+
+div:hover {
+  width: 300px;
+  height: 300px;
+  transform: rotate(-1080deg);
+  background: #05ff00;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: 05ff00;
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+li {
+  border-right: 1px solid black;
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+font-family: "lucidia console", "courier new", sans-serif;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: black;
+  color: 05ff00;
+}
+
+.active {
+  background-color: black;
+  color: 05ff00;
+}
+
+p {
+   color: 05ff00;  
+font-family: "lucidia console", "courier new", sans-serif;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="https://thatcadendude.github.io">Home</a></li>
+    <li><a href="https://thatcadendude.tumblr.com/">Blog</a></li>
+    <li><a href="https://thatcadendude.github.io/about">About</a></li>
+    <li><a href="https://thatcadendude.github.io/projects">Projects</a></li>
+  </ul>
+</nav>
+    <h1>Projects</h1>
+    <p>a collection of boredom projects ive made over time, expect this to have more added to it </p>
+</body>
