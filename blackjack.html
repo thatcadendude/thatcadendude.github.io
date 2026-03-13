@@ -4,7 +4,48 @@
 <title>thatcadendude: password blackjack</title>
  <link rel="icon" href="https://i.redd.it/just-made-a-giant-jimbo-so-now-its-in-7808x5504-resolution-v0-kidx7bqw4z8e1.png?width=5504&format=png&auto=webp&s=85ee080693dcd32af88ca0ee02a513d240b41c36">
 <style>
-:root{
+.text, p, h1, fake-input, button, div, span, table {
+  color: #00ff41;
+  text-shadow:
+    0 0 2.5px #00ff41,
+    0 0 5px #00ff41;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.96; }
+}
+
+body {
+  animation: flicker 0.15s infinite;
+}
+    
+body {
+  background: #000000;
+
+}
+
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.25) 3px
+  );
+
+  z-index: 999;
+}
+
+ :root{
   --bg:#000000; 
   --card:#000000; 
   --accent:#000000; 
