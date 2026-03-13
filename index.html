@@ -2,6 +2,30 @@
 <head>
     <title>thatcadendude: home</title>
 <style>
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.65) 100%
+  );
+
+  filter: blur(6px);
+  transform: scale(1.1);
+}
+.text, p, h1 {
+  color: #00ff41;
+  text-shadow:
+    0 0 2.5px #00ff41,
+    0 0 5px #00ff41;
+}
+
 .text, p, h1 {
   color: #00ff41;
   text-shadow:
