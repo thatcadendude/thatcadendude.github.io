@@ -1,25 +1,6 @@
 <html>
 <head>
     <title>thatcadendude: about</title>
-    <script>
-  document.addEventListener("mousemove", e => {
-    const img = document.createElement("img");
-    img.src = "cursor.png";
-    img.style.position = "fixed";
-    img.style.left = e.clientX + "px";
-    img.style.top = e.clientY + "px";
-    img.style.width = "13px";
-    img.style.pointerEvents = "none";
-    img.style.zIndex = "99999";
-    img.style.opacity = "1";
-    img.style.transition = "opacity 0.8s linear";
-    document.body.appendChild(img);
-    requestAnimationFrame(() => {
-      img.style.opacity = "0";
-    });
-    setTimeout(() => img.remove(), 300);
-  });
-    </script>
     <style>
 body {
   background-color: black;
