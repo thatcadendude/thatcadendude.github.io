@@ -3,29 +3,57 @@
     <title>thatcadendude: home</title>
 <style>
 body {
-    background-color: #000000;
+  background-color: #000000;
+  font-family: "Lucida Console", "Courier New", sans-serif;
 }
 
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 50%;
+  height: 70%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 10px;
+}
+
+.bottomleft {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .bottomleft {
+  opacity: 1;
+}
+
+.text {
+  color: #04ff00;
+  font-size: 16px;
+}
 
 h1 {
-  color: 05ff00;
-font-family: "lucidia console", "courier new", sans-serif;
+  color: #04ff00;
+font-family: "lucida console", "courier new", sans-serif;
   text-align: center;
   margin-top: 60px;
-}
-
-div {
-  width: 100px;
-  height: 100px;
-  background: #05ff00;
-  transition: width 2s, height 2s, transform 2s;
-}
-
-div:hover {
-  width: 300px;
-  height: 300px;
-  transform: rotate(-1080deg);
-  background: #05ff00;
 }
 
 ul {
@@ -47,7 +75,7 @@ li {
 li a {
   display: block;
   color: black;
-font-family: "lucidia console", "courier new", sans-serif;
+font-family: "lucida console", "courier new", sans-serif;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -58,14 +86,20 @@ li a:hover:not(.active) {
   color: 05ff00;
 }
 
+.text, p, h1 {
+  color: #04ff00;
+  font-size: 16px;
+  font-family: "lucida console", "courier new", monospace;
+}
+
 .active {
   background-color: black;
   color: 05ff00;
 }
 
 p {
-   color: 05ff00;  
-font-family: "lucidia console", "courier new", sans-serif;
+  color: 04ff00;  
+  font-family: "lucida console", "courier new", sans-serif;
   font-size: 20px;
 }
 </style>
@@ -82,4 +116,14 @@ font-family: "lucidia console", "courier new", sans-serif;
     <h1>Projects</h1>
     <p>a collection of boredom projects ive made</p>
     <p>(i will add more when i feel like it)</p>
+    <div class="container">
+      <a href="https://thatcadendude.github.io/blackjack">
+        <img src="https://images.meme-arsenal.com/78787cd6560a705280729d5bc412cdc7.jpg" class="image" style="height:30%">
+  <div class="topleft">
+    <div class="text">blackjack</div>
+  </div>  
+  <div class="bottomleft">
+    <div class="text">you forgot your password on a website, so you have to play blackjack to get a new password...</div>
+  </div>
+</div>
 </body>
