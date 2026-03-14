@@ -1,7 +1,9 @@
 <html>
 <head>
-    <title>thatcadendude: home</title>
+<title>thatcadendude: home</title>
+
 <style>
+
 body::before {
   content: "";
   position: fixed;
@@ -35,11 +37,7 @@ body::before {
 
 body {
   animation: flicker 0.15s infinite;
-}
-    
-body {
-  background: #000000;
-
+  background: black;
 }
 
 body::after {
@@ -61,25 +59,31 @@ body::after {
   z-index: 999;
 }
 
+/* BIOS BOOT SCREEN */
+
+#boot {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  color:#00ff41;
+  font-family:"lucida console","courier new",monospace;
+  padding:40px;
+  z-index:20000;
+}
+
+#bootText{
+  font-size:18px;
+  white-space:pre-wrap;
+}
+
 h1 {
-  color: 04ff00;
-font-family: "lucidia console", "courier new", sans-serif;
+  color: #04ff00;
+  font-family: "lucidia console", "courier new", sans-serif;
   text-align: center;
   margin-top: 60px;
-}
-
-div {
-  width: 100px;
-  height: 100px;
-  background: #04ff00;
-  transition: width 2s, height 2s, transform 2s;
-}
-
-div:hover {
-  width: 300px;
-  height: 300px;
-  transform: rotate(-1080deg);
-  background: #04ff00;
 }
 
 ul {
@@ -90,7 +94,7 @@ ul {
   background-color: #04ff00;
   position: fixed;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 li {
@@ -101,7 +105,7 @@ li {
 li a {
   display: block;
   color: black;
-font-family: "lucidia console", "courier new", sans-serif;
+  font-family: "lucidia console", "courier new", sans-serif;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -109,44 +113,163 @@ font-family: "lucidia console", "courier new", sans-serif;
 
 li a:hover:not(.active) {
   background-color: black;
-  color: 04ff00;
+  color: #04ff00;
 }
 
 .active {
   background-color: black;
-  color: 04ff00;
+  color: #04ff00;
 }
 
 p {
-   color: 04ff00;  
-font-family: "lucidia console", "courier new", sans-serif;
+  color: #04ff00;
+  font-family: "lucidia console", "courier new", sans-serif;
   font-size: 20px;
 }
+
 </style>
 </head>
+
 <body>
+
+<!-- BIOS SCREEN -->
+<div id="boot">
+<pre id="bootText"></pre>
+</div>
+
 <nav>
-  <ul>
-    <li><a href="https://thatcadendude.github.io">home</a></li>
-    <li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
-    <li><a href="https://thatcadendude.github.io/about">about</a></li>
-    <li><a href="https://thatcadendude.github.io/projects">projects</a></li>
-  </ul>
+<ul>
+<li><a href="https://thatcadendude.github.io">home</a></li>
+<li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
+<li><a href="https://thatcadendude.github.io/about">about</a></li>
+<li><a href="https://thatcadendude.github.io/projects">projects</a></li>
+</ul>
 </nav>
-    <h1>Main Page</h1>
-    <p>welcome to the home page (why do people even call it the home page, there isnt any houses or anything, just call it main page).</p>
-    <p>oh also, click the person below this text to go to a really cool game on steam.</p>
-    <a href="https://store.steampowered.com/app/440/Team_Fortress_2/">
-        <img src="engi.jpeg"
-             alt="engi"
-             width="7%">
-    </a>
-    <p>name: Dell Conagher</p>
-    <p>class: Engineer</p>
-    <p>type: Defensive</p>
-    <p>identity: Stoopid Face</p>
-    <br></br>
-    <p>hover your mouse over this green box, something cool will happen trust me.</p>
-    <div></div>
+
+<h1>Main Page</h1>
+
+<p>welcome to the home page (why do people even call it the home page, there isnt any houses or anything, just call it main page).</p>
+
+<p>oh also, click the person below this text to go to a really cool game on steam.</p>
+
+<a href="https://store.steampowered.com/app/440/Team_Fortress_2/">
+<img src="engi.jpeg" alt="engi" width="7%">
+</a>
+
+<p>name: Dell Conagher</p>
+<p>class: Engineer</p>
+<p>type: Defensive</p>
+<p>identity: Stoopid Face</p>
+
+<br>
+
+<p>hover your mouse over this green box, something cool will happen trust me.</p>
+
+<div></div>
+
+<script>
+
+const boot = document.getElementById("bootText");
+
+const lines = [
+"OShit 4.0 Release 6.0",
+"Copyright 1985-1988 Toilet Technologies Ltd.",
+"",
+"CPU: Intel(R) Fentium Processor @ 3.50GHz",
+"",
+"Detecting IDE Drives...",
+"Drive 0: ST340014A",
+"Drive 1: None",
+"",
+"Initializing USB Controllers...",
+"Loading Kernel...",
+"",
+"Starting OShit...",
+"",
+"Boot successful."
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeLines(){
+
+if(lineIndex >= lines.length){
+
+setTimeout(()=>{
+document.getElementById("boot").style.display="none";
+},1000);
+
+return;
+}
+
+let line = lines[lineIndex];
+
+if(charIndex < line.length){
+
+boot.textContent += line.charAt(charIndex);
+charIndex++;
+
+setTimeout(typeLines,20);
+
+}else{
+
+boot.textContent += "\n";
+lineIndex++;
+charIndex=0;
+
+setTimeout(typeLines,200);
+
+}
+
+}
+
+/* RAM COUNT ANIMATION */
+
+let ram = 0;
+const maxRam = 8192;
+
+function ramCount(){
+
+boot.textContent += "Memory Test: ";
+
+let counter = setInterval(()=>{
+
+boot.textContent =
+boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+ram+"K");
+
+ram += 128;
+
+if(ram >= maxRam){
+
+clearInterval(counter);
+
+boot.textContent =
+boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+maxRam+"K OK\n");
+
+setTimeout(typeLines,500);
+
+}
+
+},30);
+
+}
+
+/* Start boot */
+
+function startBoot(){
+
+boot.textContent += "BIOShit 4.0 Release 6.0\n";
+boot.textContent += "Copyright 1985-1988 Toilet Technologies Ltd.\n\n";
+boot.textContent += "CPU: Intel(R) Fentium Processor @ 3.50GHz\n";
+
+setTimeout(ramCount,400);
+
+}
+
+startBoot();
+
+</script>
+
 </body>
 </html>
