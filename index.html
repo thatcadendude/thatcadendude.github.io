@@ -3,63 +3,56 @@
 <title>thatcadendude: home</title>
 
 <style>
+@keyframes flicker {
+  0% { opacity: 0.96; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
+}
+
+body {
+  background:black;
+  animation:flicker 0.15s infinite;
+  margin:0;
+  padding:0;
+}
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-
-  background: radial-gradient(
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  background:radial-gradient(
     ellipse at center,
     rgba(0,0,0,0) 55%,
     rgba(0,0,0,0.35) 75%,
     rgba(0,0,0,0.65) 100%
   );
-
-  filter: blur(6px);
-  transform: scale(1.1);
-}
-
-.text, p, h1 {
-  color: #00ff41;
-  text-shadow:
-    0 0 2.5px #00ff41,
-    0 0 5px #00ff41;
-}
-
-@keyframes flicker {
-  0% { opacity: 0.95; }
-  50% { opacity: 1; }
-  100% { opacity: 0.96; }
-}
-
-body {
-  animation: flicker 0.15s infinite;
-  background: black;
+  filter:blur(6px);
+  transform:scale(1.1);
 }
 
 body::after {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: repeating-linear-gradient(
+  content:"";
+  pointer-events:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:repeating-linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0px,
     rgba(0,0,0,0) 2px,
     rgba(0,0,0,0.25) 3px
   );
-
-  z-index: 999;
+  z-index:999;
 }
 
-/* BIOS BOOT SCREEN */
+p,h1,#bootText {
+  color:#00ff41;
+  text-shadow: 0 0 2px #00ff41, 0 0 6px #00ff41, 0 0 12px #00ff41;
+}
 
 #boot {
   position: fixed;
@@ -68,63 +61,114 @@ body::after {
   width:100%;
   height:100%;
   background:black;
-  color:#00ff41;
   font-family:"lucida console","courier new",monospace;
   padding:40px;
   z-index:20000;
+  animation:flicker 0.15s infinite;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 }
 
-#bootText{
+#bootText {
+  position:relative;
+  z-index:2;
   font-size:18px;
   white-space:pre-wrap;
+  color:#00ff41;
+  text-shadow: 0 0 2px #00ff41, 0 0 6px #00ff41, 0 0 12px #00ff41;
 }
 
-h1 {
-  color: #04ff00;
-  font-family: "lucidia console", "courier new", sans-serif;
-  text-align: center;
-  margin-top: 60px;
+#bootVignette {
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.65) 100%
+  );
+  filter:blur(6px);
+  transform:scale(1.1);
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #04ff00;
-  position: fixed;
-  top: 0;
-  width: 100%;
+#bootScanlines {
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:3;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.25) 3px
+  );
 }
 
-li {
-  border-right: 1px solid black;
-  float: left;
+ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:#04ff00;
+  position:fixed;
+  top:0;
+  width:100%;
 }
 
-li a {
-  display: block;
-  color: black;
-  font-family: "lucidia console", "courier new", sans-serif;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+li{
+  float:left;
+  border-right:1px solid black;
 }
 
-li a:hover:not(.active) {
-  background-color: black;
-  color: #04ff00;
+li a{
+  display:block;
+  color:black;
+  font-family:"lucidia console","courier new",sans-serif;
+  text-align:center;
+  padding:14px 16px;
+  text-decoration:none;
 }
 
-.active {
-  background-color: black;
-  color: #04ff00;
+li a:hover:not(.active){
+  background:black;
+  color:#04ff00;
 }
 
-p {
-  color: #04ff00;
-  font-family: "lucidia console", "courier new", sans-serif;
-  font-size: 20px;
+.active{
+  background:black;
+  color:#04ff00;
+}
+
+h1{
+  font-family:"lucidia console","courier new",sans-serif;
+  text-align:center;
+  margin-top:60px;
+}
+
+p{
+  font-family:"lucidia console","courier new",sans-serif;
+  font-size:20px;
+}
+
+div{
+  width:100px;
+  height:100px;
+  background:#04ff00;
+  transition:width 2s,height 2s,transform 2s;
+}
+
+div:hover{
+  width:300px;
+  height:300px;
+  transform:rotate(-1080deg);
 }
 
 </style>
@@ -132,9 +176,10 @@ p {
 
 <body>
 
-<!-- BIOS SCREEN -->
 <div id="boot">
-<pre id="bootText"></pre>
+  <pre id="bootText"></pre>
+  <div id="bootVignette"></div>
+  <div id="bootScanlines"></div>
 </div>
 
 <nav>
@@ -147,9 +192,7 @@ p {
 </nav>
 
 <h1>Main Page</h1>
-
 <p>welcome to the home page (why do people even call it the home page, there isnt any houses or anything, just call it main page).</p>
-
 <p>oh also, click the person below this text to go to a really cool game on steam.</p>
 
 <a href="https://store.steampowered.com/app/440/Team_Fortress_2/">
@@ -164,111 +207,69 @@ p {
 <br>
 
 <p>hover your mouse over this green box, something cool will happen trust me.</p>
-
 <div></div>
 
 <script>
-
 const boot = document.getElementById("bootText");
 
+let ram = 0;
+const maxRam = 8192;
+
+function ramCount(){
+  boot.textContent += "Memory Test: ";
+  let counter = setInterval(()=>{
+    boot.textContent = boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+ram+"K");
+    ram += 128;
+    if(ram >= maxRam){
+      clearInterval(counter);
+      boot.textContent = boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+maxRam+"K OK\n");
+      setTimeout(typeLines,500);
+    }
+  },30);
+}
+
 const lines = [
-"OShit 4.0 Release 6.0",
-"Copyright 1985-1988 Toilet Technologies Ltd.",
-"",
-"CPU: Intel(R) Fentium Processor @ 3.50GHz",
-"",
-"Detecting IDE Drives...",
-"Drive 0: ST340014A",
-"Drive 1: None",
-"",
-"Initializing USB Controllers...",
-"Loading Kernel...",
-"",
-"Starting OShit...",
-"",
-"Boot successful."
+  "Detecting IDE Drives...",
+  "Drive 0: ST340014A",
+  "Drive 1: None",
+  "",
+  "Initializing USB Controllers...",
+  "Loading Kernel...",
+  "",
+  "Starting thatcadendude OS...",
+  "",
+  "Boot successful."
 ];
 
 let lineIndex = 0;
 let charIndex = 0;
 
 function typeLines(){
-
-if(lineIndex >= lines.length){
-
-setTimeout(()=>{
-document.getElementById("boot").style.display="none";
-},1000);
-
-return;
+  if(lineIndex >= lines.length){
+    setTimeout(()=>{document.getElementById("boot").style.display="none";},1000);
+    return;
+  }
+  let line = lines[lineIndex];
+  if(charIndex < line.length){
+    boot.textContent += line.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeLines,20);
+  } else {
+    boot.textContent += "\n";
+    lineIndex++;
+    charIndex = 0;
+    setTimeout(typeLines,200);
+  }
 }
-
-let line = lines[lineIndex];
-
-if(charIndex < line.length){
-
-boot.textContent += line.charAt(charIndex);
-charIndex++;
-
-setTimeout(typeLines,20);
-
-}else{
-
-boot.textContent += "\n";
-lineIndex++;
-charIndex=0;
-
-setTimeout(typeLines,200);
-
-}
-
-}
-
-/* RAM COUNT ANIMATION */
-
-let ram = 0;
-const maxRam = 8192;
-
-function ramCount(){
-
-boot.textContent += "Memory Test: ";
-
-let counter = setInterval(()=>{
-
-boot.textContent =
-boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+ram+"K");
-
-ram += 128;
-
-if(ram >= maxRam){
-
-clearInterval(counter);
-
-boot.textContent =
-boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+maxRam+"K OK\n");
-
-setTimeout(typeLines,500);
-
-}
-
-},30);
-
-}
-
-/* Start boot */
 
 function startBoot(){
-
-boot.textContent += "BIOShit 4.0 Release 6.0\n";
-boot.textContent += "Copyright 1985-1988 Toilet Technologies Ltd.\n\n";
-boot.textContent += "CPU: Intel(R) Fentium Processor @ 3.50GHz\n";
-
-setTimeout(ramCount,400);
-
+  boot.textContent += "PhoenixBIOS 4.0 Release 6.0\n";
+  boot.textContent += "Copyright 1985-1988 Phoenix Technologies Ltd.\n\n";
+  boot.textContent += "CPU: Intel(R) Retro Processor @ 3.50GHz\n";
+  setTimeout(ramCount,400);
 }
 
 startBoot();
-
 </script>
 
 </body>
