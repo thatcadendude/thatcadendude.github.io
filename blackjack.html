@@ -4,6 +4,23 @@
 <title>thatcadendude: password blackjack</title>
  <link rel="icon" href="https://i.redd.it/just-made-a-giant-jimbo-so-now-its-in-7808x5504-resolution-v0-kidx7bqw4z8e1.png?width=5504&format=png&auto=webp&s=85ee080693dcd32af88ca0ee02a513d240b41c36">
 <style>
+ body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.65) 100%
+  );
+
+  filter: blur(6px);
+  transform: scale(1.1);
+}
 .text, p, h1, fake-input, button, div, span, table {
   color: #00ff41;
   text-shadow:
