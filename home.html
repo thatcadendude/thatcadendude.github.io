@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>thatcadendude: home</title>
+
+<style>
+body {
+  background:black;
+  animation:flicker 0.15s infinite;
+  margin:0;
+  padding:0;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.65) 100%
+  );
+  filter:blur(6px);
+  transform:scale(1.1);
+}
+
+body::after {
+  content:"";
+  pointer-events:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.25) 3px
+  );
+  z-index:999;
+}
+
+p,h1,#bootText {
+  color:#04ff00;
+  text-shadow: 0 0 2px #00ff41, 0 0 6px #00ff41, 0 0 12px #00ff41;
+}
+
+ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:#04ff00;
+  position:fixed;
+  top:0;
+  width:100%;
+}
+
+li{
+  float:left;
+  border-right:1px solid black;
+}
+
+li a{
+  display:block;
+  color:black;
+  font-family:"lucidia console","courier new",sans-serif;
+  text-align:center;
+  padding:14px 16px;
+  text-decoration:none;
+}
+
+li a:hover:not(.active){
+  background:black;
+  color:#04ff00;
+}
+
+.active{
+  background:black;
+  color:#04ff00;
+}
+
+h1{
+  font-family:"lucidia console","courier new",sans-serif;
+  text-align:center;
+  margin-top:60px;
+}
+
+p{
+  font-family:"lucidia console","courier new",sans-serif;
+  font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<ul>
+<li><a href="https://thatcadendude.github.io/home">home</a></li>
+<li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
+<li><a href="https://thatcadendude.github.io/about">about</a></li>
+<li><a href="https://thatcadendude.github.io/projects">projects</a></li>
+</ul>
+</nav>
+
+<h1>Main Page</h1>
+<p>welcome to the home page.</p>
+</body>
+</html>
