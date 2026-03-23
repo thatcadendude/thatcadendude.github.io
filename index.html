@@ -3,11 +3,6 @@
 <title>thatcadendude: home</title>
 
 <style>
-@keyframes flicker {
-  0% { opacity: 0.96; }
-  50% { opacity: 1; }
-  100% { opacity: 0.97; }
-}
 
 body {
   background:black;
@@ -66,50 +61,12 @@ p,h1,#bootText {
   z-index:20000;
   animation:flicker 0.15s infinite;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
 }
 
 #bootText {
-  position:relative;
-  z-index:2;
   font-size:18px;
-  white-space:pre-wrap;
+  white-space:pre;
   color:#00ff41;
-  text-shadow: 0 0 2px #00ff41, 0 0 6px #00ff41, 0 0 12px #00ff41;
-}
-
-#bootVignette {
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,0) 55%,
-    rgba(0,0,0,0.35) 75%,
-    rgba(0,0,0,0.65) 100%
-  );
-  filter:blur(6px);
-  transform:scale(1.1);
-}
-
-#bootScanlines {
-  content:"";
-  pointer-events:none;
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:3;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0px,
-    rgba(0,0,0,0) 2px,
-    rgba(0,0,0,0.25) 3px
-  );
 }
 
 ul{
@@ -157,7 +114,6 @@ p{
   font-family:"lucidia console","courier new",sans-serif;
   font-size:20px;
 }
-
 </style>
 </head>
 
@@ -165,8 +121,6 @@ p{
 
 <div id="boot">
   <pre id="bootText"></pre>
-  <div id="bootVignette"></div>
-  <div id="bootScanlines"></div>
 </div>
 
 <nav>
@@ -179,22 +133,7 @@ p{
 </nav>
 
 <h1>Main Page</h1>
-<p>welcome to the home page (why do people even call it the home page, there isnt any houses or anything, just call it main page).</p>
-<p>oh also, click the person below this text to go to a really cool game on steam.</p>
-
-<a href="https://store.steampowered.com/app/440/Team_Fortress_2/">
-<img src="engi.jpeg" alt="engi" width="7%">
-</a>
-
-<p>name: Dell Conagher</p>
-<p>class: Engineer</p>
-<p>type: Defensive</p>
-<p>identity: Stoopid Face</p>
-
-<br>
-
-<p>hover your mouse over this green box, something cool will happen trust me.</p>
-<div></div>
+<p>welcome to the home page (yes it's still called that).</p>
 
 <script>
 const boot = document.getElementById("bootText");
@@ -209,55 +148,99 @@ function ramCount(){
     ram += 128;
     if(ram >= maxRam){
       clearInterval(counter);
-      boot.textContent = boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+maxRam+"K OK\n");
-      setTimeout(typeLines,500);
+      boot.textContent = boot.textContent.replace(/Memory Test:.*/,"Memory Test: "+maxRam+"K OK\n\n");
+      setTimeout(startSequence, 400);
     }
-  },30);
+  },20);
 }
 
-const lines = [
+const ascii = `
+  ::::::::::: :::    :::     ::: ::::::::::: ::::::::      :::     :::::::::  :::::::::: ::::    ::: :::::::::  :::    ::: :::::::::  ::::::::::
+     :+:     :+:    :+:   :+: :+:   :+:    :+:    :+:   :+: :+:   :+:    :+: :+:        :+:+:   :+: :+:    :+: :+:    :+: :+:    :+: :+:
+    +:+     +:+    +:+  +:+   +:+  +:+    +:+         +:+   +:+  +:+    +:+ +:+        :+:+:+  +:+ +:+    +:+ +:+    +:+ +:+    +:+ +:+
+   +#+     +#++:++#++ +#++:++#++: +#+    +#+        +#++:++#++: +#+    +:+ +#++:++#   +#+ +:+ +#+ +#+    +:+ +#+    +:+ +#+    +:+ +#++:++#
+  +#+     +#+    +#+ +#+     +#+ +#+    +#+        +#+     +#+ +#+    +#+ +#+        +#+  +#+#+# +#+    +#+ +#+    +#+ +#+    +#+ +#+
+ #+#     #+#    #+# #+#     #+# #+#    #+#    #+# #+#     #+# #+#    #+# #+#        #+#   #+#+# #+#    #+# #+#    #+# #+#    #+# #+#
+###     ###    ### ###     ### ###     ########  ###     ### #########  ########## ###    #### #########   ########  #########  ##########
+`;
+
+const sequence = [
   "Detecting IDE Drives...",
-  "Drive 0: ST340014A",
+  "Drive 0: ST340014A [ OK ]",
   "Drive 1: None",
   "",
   "Initializing USB Controllers...",
-  "Loading Kernel...",
+  "USB Controller 1 [ OK ]",
+  "USB Controller 2 [ OK ]",
   "",
-  "Starting OShit...",
+  "Checking CMOS...",
+  "CMOS Checksum [ FAILED ]",
+  "Loading default settings...",
   "",
-  "Boot successful."
+  "Initializing Hardware Monitor...",
+  "CPU Fan [ OK ]",
+  "System Temp [ OK ]",
+  ""
 ];
 
-let lineIndex = 0;
-let charIndex = 0;
+let index = 0;
 
-function typeLines(){
-  if(lineIndex >= lines.length){
-    setTimeout(()=>{document.getElementById("boot").style.display="none";},1000);
+function startSequence(){
+  if(index >= sequence.length){
+    kernelPhase();
     return;
   }
-  let line = lines[lineIndex];
-  if(charIndex < line.length){
-    boot.textContent += line.charAt(charIndex);
-    charIndex++;
-    setTimeout(typeLines,20);
-  } else {
-    boot.textContent += "\n";
-    lineIndex++;
-    charIndex = 0;
-    setTimeout(typeLines,200);
-  }
+
+  boot.textContent += sequence[index] + "\n";
+  index++;
+
+  setTimeout(startSequence, 120 + Math.random() * 180);
+}
+
+function kernelPhase(){
+  boot.textContent += "\nLoading Kernel";
+
+  setTimeout(()=> boot.textContent += ".", 300);
+  setTimeout(()=> boot.textContent += ".", 600);
+  setTimeout(()=> boot.textContent += ".", 900);
+
+  setTimeout(()=>{
+    boot.textContent += " [ OK ]\n";
+  }, 1200);
+
+  setTimeout(()=>{
+    boot.textContent += "\nStarting services...\n";
+  }, 1600);
+
+  setTimeout(()=>{
+    showAscii();
+  }, 2200);
+}
+
+function showAscii(){
+  boot.textContent += ascii + "\n";
+
+  setTimeout(()=>{
+    boot.textContent += "\nStarting OShit...\n";
+  }, 1200);
+
+  setTimeout(()=>{
+    boot.textContent += "Boot successful.\n";
+  }, 1800);
+
+  setTimeout(()=>{
+    document.getElementById("boot").style.display = "none";
+  }, 2800);
 }
 
 function startBoot(){
   boot.textContent += "BIOShit 4.0 Release 6.0\n";
   boot.textContent += "Copyright 2026 Toilet Technologies Ltd. Co. Inc.\n\n";
-  boot.textContent += "CPU: Shitel(R) Fentium Processor @ 3.50GHz\n";
+  boot.textContent += "CPU: Shitel(R) Fentium Processor @ 3.50GHz\n\n";
   setTimeout(ramCount,400);
 }
 
 startBoot();
 </script>
-
 </body>
 </html>
