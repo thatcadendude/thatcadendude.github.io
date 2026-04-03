@@ -11,6 +11,12 @@ body {
   padding:0;
 }
 
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
 body::before {
   content:"";
   position:fixed;
@@ -69,51 +75,6 @@ p,h1,#bootText {
   color:#00ff41;
 }
 
-ul{
-  list-style-type:none;
-  margin:0;
-  padding:0;
-  overflow:hidden;
-  background:#04ff00;
-  position:fixed;
-  top:0;
-  width:100%;
-}
-
-li{
-  float:left;
-  border-right:1px solid black;
-}
-
-li a{
-  display:block;
-  color:black;
-  font-family:"lucidia console","courier new",sans-serif;
-  text-align:center;
-  padding:14px 16px;
-  text-decoration:none;
-}
-
-li a:hover:not(.active){
-  background:black;
-  color:#04ff00;
-}
-
-.active{
-  background:black;
-  color:#04ff00;
-}
-
-h1{
-  font-family:"lucidia console","courier new",sans-serif;
-  text-align:center;
-  margin-top:60px;
-}
-
-p{
-  font-family:"lucidia console","courier new",sans-serif;
-  font-size:20px;
-}
 </style>
 </head>
 
@@ -123,20 +84,20 @@ p{
   <pre id="bootText"></pre>
 </div>
 
-<nav>
-<ul>
-<li><a href="https://thatcadendude.github.io">home</a></li>
-<li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
-<li><a href="https://thatcadendude.github.io/about">about</a></li>
-<li><a href="https://thatcadendude.github.io/projects">projects</a></li>
-</ul>
-</nav>
-
-<h1>Main Page</h1>
-<p>welcome to the home page (yes it's still called that).</p>
+<!-- ✅ ASCII stored safely here -->
+<script id="asciiData" type="text/plain">
+|''||''| '||               ||    .|'''',             ||`                 '||'''|.              ||`
+   ||     ||               ||    ||                  ||                   ||   ||              ||
+   ||     ||''|,  '''|.  ''||''  ||       '''|.  .|''||  .|''|, `||''|,   ||   || '||  ||` .|''||  .|''|,
+   ||     ||  || .|''||    ||    ||      .|''||  ||  ||  ||..||  ||  ||   ||   ||  ||  ||  ||  ||  ||..||
+  .||.   .||  || `|..||.   `|..' `|....' `|..||. `|..||. `|...  .||  ||. .||...|'  `|..'|. `|..||. `|...
+</script>
 
 <script>
 const boot = document.getElementById("bootText");
+
+// ✅ Load ASCII safely
+const ascii = document.getElementById("asciiData").textContent;
 
 let ram = 0;
 const maxRam = 8192;
@@ -153,16 +114,6 @@ function ramCount(){
     }
   },20);
 }
-
-const ascii = `
-  ::::::::::: :::    :::     ::: ::::::::::: ::::::::      :::     :::::::::  :::::::::: ::::    ::: :::::::::  :::    ::: :::::::::  ::::::::::
-     :+:     :+:    :+:   :+: :+:   :+:    :+:    :+:   :+: :+:   :+:    :+: :+:        :+:+:   :+: :+:    :+: :+:    :+: :+:    :+: :+:
-    +:+     +:+    +:+  +:+   +:+  +:+    +:+         +:+   +:+  +:+    +:+ +:+        :+:+:+  +:+ +:+    +:+ +:+    +:+ +:+    +:+ +:+
-   +#+     +#++:++#++ +#++:++#++: +#+    +#+        +#++:++#++: +#+    +:+ +#++:++#   +#+ +:+ +#+ +#+    +:+ +#+    +:+ +#+    +:+ +#++:++#
-  +#+     +#+    +#+ +#+     +#+ +#+    +#+        +#+     +#+ +#+    +#+ +#+        +#+  +#+#+# +#+    +#+ +#+    +#+ +#+    +#+ +#+
- #+#     #+#    #+# #+#     #+# #+#    #+#    #+# #+#     #+# #+#    #+# #+#        #+#   #+#+# #+#    #+# #+#    #+# #+#    #+# #+#
-###     ###    ### ###     ### ###     ########  ###     ### #########  ########## ###    #### #########   ########  #########  ##########
-`;
 
 const sequence = [
   "Detecting IDE Drives...",
@@ -228,9 +179,9 @@ function showAscii(){
     boot.textContent += "Boot successful.\n";
   }, 1800);
 
-setTimeout(()=>{
-  window.location.href = "https://thatcadendude.github.io/home";
-}, 3500);
+  setTimeout(()=>{
+    window.location.href = "https://thatcadendude.github.io/home";
+  }, 3500);
 }
 
 function startBoot(){
