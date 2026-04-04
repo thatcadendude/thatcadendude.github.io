@@ -1,31 +1,8 @@
 <html>
 <head>
-    <title>thatcadendude: about</title>
-    <style>
- body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
+<title>thatcadendude: about</title>
 
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,0) 55%,
-    rgba(0,0,0,0.35) 75%,
-    rgba(0,0,0,0.65) 100%
-  );
-
-  filter: blur(6px);
-  transform: scale(1.1);
-}
-.text, p, h1 {
-  color: #00ff41;
-  text-shadow:
-    0 0 2.5px #00ff41,
-    0 0 5px #00ff41;
-}
-
+<style>
 @keyframes flicker {
   0% { opacity: 0.95; }
   50% { opacity: 1; }
@@ -33,106 +10,113 @@
 }
 
 body {
-  animation: flicker 0.15s infinite;
+  background:black;
+  animation:flicker 0.15s infinite;
+  margin:0;
+  padding:0;
 }
-    
-body {
-  background: #000000;
 
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 75%,
+    rgba(0,0,0,0.65) 100%
+  );
+  filter:blur(6px);
+  transform:scale(1.1);
 }
 
 body::after {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: repeating-linear-gradient(
+  content:"";
+  pointer-events:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:repeating-linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0px,
     rgba(0,0,0,0) 2px,
     rgba(0,0,0,0.25) 3px
   );
-
-  z-index: 999;
+  z-index:999;
 }
 
-h1 {
-  color: 04ff00;
-font-family: "lucidia console", "courier new", sans-serif;
-  text-align: center;
-  margin-top: 60px;
+p,h1,#bootText {
+  color:#04ff00;
+  text-shadow: 0 0 2px #00ff41, 0 0 6px #00ff41, 0 0 12px #00ff41;
 }
 
-div {
-  width: 100px;
-  height: 100px;
-  background: #04ff00;
-  transition: width 2s, height 2s, transform 2s;
+ul{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:#04ff00;
+  position:fixed;
+  top:0;
+  width:100%;
 }
 
-div:hover {
-  width: 300px;
-  height: 300px;
-  transform: rotate(-1080deg);
-  background: #04ff00;
+li{
+  float:left;
+  border-right:1px solid black;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: 04ff00;
-  position: fixed;
-  top: 0;
-  width: 100%
+li a{
+  display:block;
+  color:black;
+  font-family:"lucidia console","courier new",sans-serif;
+  text-align:center;
+  padding:14px 16px;
+  text-decoration:none;
 }
 
-li {
-  border-right: 1px solid black;
-  float: left;
+li a:hover:not(.active){
+  background:black;
+  color:#04ff00;
 }
 
-li a {
-  display: block;
-  color: black;
-font-family: "lucidia console", "courier new", sans-serif;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.active{
+  background:black;
+  color:#04ff00;
 }
 
-li a:hover:not(.active) {
-  background-color: black;
-  color: 04ff00;
+h1{
+  font-family:"lucidia console","courier new",sans-serif;
+  text-align:center;
+  margin-top:60px;
 }
 
-.active {
-  background-color: black;
-  color: 04ff00;
+p{
+  font-family:"lucidia console","courier new",sans-serif;
+  font-size:20px;
 }
-
-p {
-   color: 04ff00;  
-font-family: "lucidia console", "courier new", sans-serif;
-  font-size: 20px;
-}
-    </style>
+</style>
 </head>
+
 <body>
+
 <nav>
-  <ul>
-    <li><a href="https://thatcadendude.github.io/home">home</a></li>
-    <li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
-    <li><a href="https://thatcadendude.github.io/projects">projects</a></li>
-    <li><a href="https://thatcadendude.github.io/about">about</a></li>
-  </ul>
+<ul>
+<li><a href="https://thatcadendude.github.io/home">home</a></li>
+<li><a href="https://thatcadendude.tumblr.com/">blog</a></li>
+<li><a href="https://thatcadendude.github.io/projects">projects</a></li>
+<li><a href="https://thatcadendude.github.io/about">about</a></li>
+</ul>
 </nav>
-    <h1>About</h1>
-    <p>idk what to put here.</p>
+
+<h1>About</h1>
+<p><b>list of stuff about me that you probably dont care about</b></p>
+<p>-amateur web devloper with weird but creative ideas</p>
+<p>-i like doodling and drawing my character</p>
+<p>-subpar counter strike player (faceit level 4 + 5k cs rating)</p>
 </body>
 </html>
